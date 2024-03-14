@@ -18,5 +18,5 @@ public interface UserActivityDao {
 
     void delete(int id) throws DaoException;
 
-    public List<UserActivity> findAllAddUsername() throws DaoException;
+    List<UserActivity> findAllAddUsername() throws DaoException;
 }
