@@ -1,12 +1,10 @@
 package lab.andersen.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lab.andersen.dao.UserActivityDaoImpl;
 import lab.andersen.exception.ServiceException;
 import lab.andersen.model.UserActivity;
 import lab.andersen.service.UserActivityServiceImpl;
-import lab.andersen.util.TimestampDeserializer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +39,7 @@ public class UserActivityServlet extends HttpServlet {
         if(pathInfo == null || pathInfo.equals("/")) {
             List<UserActivity> activities = null;
             try {
-                activities = userActivityService.findAllUsersActivitiesWithUsernames();
+                activities = userActivityService.findAllUsersActivities();
             } catch (ServiceException e) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
                 return;
