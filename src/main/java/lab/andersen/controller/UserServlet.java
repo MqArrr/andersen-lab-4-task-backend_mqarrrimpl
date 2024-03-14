@@ -63,7 +63,7 @@ public class UserServlet extends HttpServlet {
         try {
             userService.create(user);
         } catch (ServiceException e) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }
         resp.setStatus(HttpServletResponse.SC_CREATED);
     }
@@ -82,11 +82,11 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String pathInfo = req.getPathInfo();
         try {
-            int id = Integer.parseInt(pathInfo.replace("/", ""));
+            int id = Integer.parseInt(req.getParameter("id"));
             userService.delete(id);
         } catch (ServiceException | NumberFormatException e) {
+            System.out.println("Error " + e);
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
         resp.setStatus(HttpServletResponse.SC_NO_CONTENT);

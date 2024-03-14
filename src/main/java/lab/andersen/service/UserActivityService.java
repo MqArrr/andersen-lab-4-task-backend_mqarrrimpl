@@ -8,6 +8,7 @@ import java.util.List;
 public interface UserActivityService {
 
     List<UserActivity> findAllUsersActivities() throws ServiceException;
+    List<UserActivity> findAllUsersActivitiesWithUsernames() throws ServiceException;
 
     UserActivity findById(int id) throws ServiceException;
 

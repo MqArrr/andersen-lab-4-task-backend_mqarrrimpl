@@ -25,6 +25,15 @@ public class UserActivityServiceImpl implements UserActivityService {
     }
 
     @Override
+    public List<UserActivity> findAllUsersActivitiesWithUsernames() throws ServiceException {
+        try {
+            return userActivityDao.findAllAddUsername();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public UserActivity findById(int id) throws ServiceException {
         try {
             Optional<UserActivity> optionalUserActivity = userActivityDao.findById(id);
